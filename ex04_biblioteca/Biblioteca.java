@@ -1,27 +1,26 @@
 package ex04_biblioteca;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Biblioteca {
-    private List<Livro> livros;
+    private ArrayList<Livro> livros = new ArrayList<>();
 
     public void incluirLivro(Livro livro){
-        if(!existeLivro(livro)){
-            livros.remove(livro);
+        if(livro!=null && !existeLivro(livro)){
+            livros.add(livro);
         }
     }
 
     public void excluirLivro(Livro livro){
-        if(existeLivro(livro)){
+        if(livro!=null && existeLivro(livro)){
             livros.remove(livro);
         }
     }
 
-    public boolean existeLivro(Livro livro) {
+    public boolean existeLivro(Livro livro){
         return livros.contains(livro);
     }
 
 }
 
 
-/*c) Os métodos incluirLivro e excluirLivro devem verificar caso o livro já esteja na biblioteca ou seja nulo.*/

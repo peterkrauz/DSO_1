@@ -4,10 +4,6 @@ public class Autor {
     private int codigo;
     private String nome;
 
-    public Autor(){
-
-    }
-
     public Autor(int codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;

@@ -1,112 +1,86 @@
 package ex04_biblioteca;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Livro {
     private int codigo;
     private String titulo;
     private int ano;
-    private List<Autor> autores;
     private Editora editora;
-    private List<Capitulo> capitulos;
+    private ArrayList<Autor> autores;
+    private ArrayList<Capitulo> capitulos;
 
-    public Livro(){
-
-    }
-
-    public Livro(int codigo, String titulo, int ano, List<Autor> autores, Editora editora, int numeroCapitulo, String tituloCapitulo) {
+    public Livro(int codigo, String titulo, int ano, Editora editora, Autor autor, int numeroCapitulo, String tituloCapitulo) {
         this.codigo = codigo;
         this.titulo = titulo;
         this.ano = ano;
-        this.autores = autores;
         this.editora = editora;
-        capitulos = new ArrayList<>();
+        this.autores = new ArrayList<>();
+        autores.add(autor);
+        this.capitulos = new ArrayList<>();
         capitulos.add(new Capitulo(numeroCapitulo, tituloCapitulo));
     }
 
     public int getCodigo() {
         return codigo;
     }
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     public String getTitulo() {
         return titulo;
+    }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public int getAno() {
         return ano;
     }
-
-    public List<Autor> getAutores() {
-        return autores;
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
     public Editora getEditora() {
         return editora;
     }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
     public void setEditora(Editora editora) {
         this.editora = editora;
     }
 
-    public boolean jahVinculado(Autor autor) {
-        return autores.contains(autor);
+    public ArrayList<Autor> getAutores() {
+        return autores;
     }
-
     public void incluirAutor(Autor autor){
-        if(autor != null && !jahVinculado(autor)){
+        if (!autores.contains(autor) && autor!=null){
+            autores.add(autor);
+        }
+    }
+    public void excluirAutor(Autor autor){
+        if (autor!=null && autores.contains(autor)){
             autores.add(autor);
         }
     }
 
-    public void excluirAutor(Autor autor){
-        if (autor != null && jahVinculado(autor)){
-            autores.remove(autor);
-        }
-    }
-
-    public boolean existeCapitulo(String tituloCapitulo) {
-        boolean existe = false;
-        for (Capitulo c : capitulos){
-            if(c.getTitulo().equals(tituloCapitulo)){
-                existe = true;
-            }
-        }
-        return existe;
-    }
-
     public void incluirCapitulo(int numero, String tituloCapitulo){
-        if (existeCapitulo(tituloCapitulo)) {
-            capitulos.add(new Capitulo(numero,tituloCapitulo));
+        if(findCapituloByTitulo(tituloCapitulo)==null){
+            capitulos.add(new Capitulo(numero, tituloCapitulo));
         }
     }
-
     public void excluirCapitulo(String tituloCapitulo){
-        if (!existeCapitulo(tituloCapitulo)) {
-            capitulos.remove(findCapituloByTitulo(tituloCapitulo));
+        Capitulo capitulo = findCapituloByTitulo(tituloCapitulo);
+        if(capitulo!=null){
+            capitulos.remove(capitulo);
         }
     }
-
     public Capitulo findCapituloByTitulo(String capTitulo){
         Capitulo capitulo = null;
-        for (Capitulo c : capitulos){
+        for(Capitulo c : capitulos){
             if(c.getTitulo().equals(capTitulo)){
                 capitulo = c;
             }
         }
         return capitulo;
     }
-
 }
