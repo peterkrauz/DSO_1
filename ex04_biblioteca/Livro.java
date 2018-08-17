@@ -53,14 +53,26 @@ public class Livro {
         return autores;
     }
     public void incluirAutor(Autor autor){
-        if (!autores.contains(autor) && autor!=null){
+        if (!jahExiste(autor) && autor!=null){
             autores.add(autor);
         }
     }
     public void excluirAutor(Autor autor){
-        if (autor!=null && autores.contains(autor)){
-            autores.add(autor);
+        if (autor!=null && jahExiste(autor)){
+            autores.remove(autor);
         }
+    }
+    public boolean jahExiste(Autor autor){
+        boolean existe = false;
+        if(autor != null){
+             for(Autor a : autores){
+                if(a.getCodigo()==autor.getCodigo()){
+                   existe = true;
+                }  
+            }
+        }
+        
+        return existe;
     }
 
     public void incluirCapitulo(int numero, String tituloCapitulo){
