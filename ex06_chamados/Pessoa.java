@@ -1,3 +1,5 @@
+package ex06_chamados;
+
 public class Pessoa implements IPessoa{
 
   private int codigo;

@@ -1,3 +1,4 @@
+package ex06_chamados;
 /*
  * Universidade Federal de Santa Catarina.
  * CTC - Centro Tecnologico - http://ctc.ufsc.br

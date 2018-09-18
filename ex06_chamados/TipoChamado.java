@@ -1,3 +1,5 @@
+package ex06_chamados;
+
 public class TipoChamado implements ITipoChamado{
 
   private int codigo;

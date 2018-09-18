@@ -1,3 +1,5 @@
+package ex06_chamados;
+
 import java.util.Date;
 
 public class Chamado implements IChamado{
@@ -24,26 +26,27 @@ public class Chamado implements IChamado{
     this.date = date;
   }
 
-  public int getCliente(){
+  @Override
+  public Cliente getCliente(){
     return cliente;
   }
-
+  @Override
   public String getDescricao(){
     return descricao;
   }
-
+  @Override
   public int getPrioridade(){
     return prioridade;
   }
-
+  @Override
   public Tecnico getTecnico(){
     return tecnico;
   }
-
-  public TipoChamado getTipoChamado(){
+  @Override
+  public TipoChamado getTipo(){
     return tipoChamado;
   }
-
+  @Override
   public String getTitulo(){
     return titulo;
   }

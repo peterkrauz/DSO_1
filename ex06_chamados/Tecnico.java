@@ -1,3 +1,5 @@
+package ex06_chamados;
+
 public class Tecnico extends Pessoa{
 
   public Tecnico(){}

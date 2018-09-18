@@ -1,3 +1,5 @@
+package ex06_chamados;
+
 import java.util.ArrayList;
 
 public class ControladorPessoas implements IControladorPessoas{
@@ -10,40 +12,33 @@ public class ControladorPessoas implements IControladorPessoas{
     this.tecnicos = new ArrayList<>();
   }
 
-  public ArrayList<Cliente> getClientes(){
+
+  @Override
+  public ArrayList<Cliente> getClientes() {
     return clientes;
   }
 
-  public ArrayList<Tecnico> getTecnicos(){
+  @Override
+  public ArrayList<Tecnico> getTecnicos() {
     return tecnicos;
   }
 
+  @Override
+  public IPessoa incluiCliente(int codigo, String nome) {
+      Cliente novoCliente = new Cliente(codigo, nome);
+      if(!clientes.contains(novoCliente)){
+          clientes.add(novoCliente);
+      }
+      return novoCliente;
+  }
+
+  @Override
+  public IPessoa incluiTecnico(int codigo, String nome) {
+      Tecnico novoTecnico = new Tecnico(codigo, nome);
+      if(!tecnicos.contains(novoTecnico)){
+          tecnicos.add(novoTecnico);
+      }
+      return novoTecnico;
+  }
 }
 
-/**
- *
- * @return retorna a lista de clientes
- */
-public ArrayList<Cliente> getClientes();
-
-/**
- *
- * @return retorna a lista de tecnicos
- */
-public ArrayList<Tecnico> getTecnicos();
-
-/**
- * Permite a inclusao de um novo cliente na lista de clientes
- * @param codigo codigo do Cliente
- * @param nome nome do Cliente
- * @return retorna o cliente inserido como um IPessoa
- */
-public IPessoa incluiCliente(int codigo, String nome);
-
-/**
- * Permite a inclusao de um novo tecnico na lista de tecnicos
- * @param codigo codigo do tecnico
- * @param nome nome do tecnico
- * @return retorna o tecnico inserido como um IPessoa
- */
-public IPessoa incluiTecnico(int codigo, String nome);
