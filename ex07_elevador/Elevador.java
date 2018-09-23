@@ -35,7 +35,7 @@ public class Elevador implements IElevador {
   @Override
   public String descer() throws ElevadorJahNoTerreoException{
     if( andar > 0 ){
-      setAndar(andar - 1)
+      setAndar(andar - 1);
     } else {
       throw new ElevadorJahNoTerreoException("Elevador já no térreo");
     }
@@ -43,7 +43,7 @@ public class Elevador implements IElevador {
   }
   @Override
   public String entraPessoa() throws ElevadorCheioException{
-    if ( getTotalPessoas == capacidade ) {
+    if ( getTotalPessoas() == capacidade ) {
       throw new ElevadorCheioException("Elevador cheio.");
     } else {
       setTotalPessoas( totalPessoas + 1 );
@@ -52,7 +52,7 @@ public class Elevador implements IElevador {
   }
   @Override
   public String saiPessoa() throws ElevadorJahVazioException{
-    if( getTotalPessoas == 0  ){
+    if( getTotalPessoas() == 0  ){
       throw new ElevadorJahVazioException();
     } else {
       setTotalPessoas( totalPessoas - 1 );
@@ -61,7 +61,7 @@ public class Elevador implements IElevador {
   }
   @Override
   public String subir() throws ElevadorJahNoUltimoAndarException{
-    if ( getAndarAtual == totalAndaresPredio ) {
+    if ( getAndarAtual() == totalAndaresPredio ) {
       throw new ElevadorJahNoUltimoAndarException();
     } else {
       setAndar( andar + 1 );
