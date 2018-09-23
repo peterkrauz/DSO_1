@@ -91,7 +91,6 @@ public class Elevador implements IElevador {
 
     public void setAndar(int novoAndar){
       this.andar = novoAndar;
-      return novoAndar;
     }
 
     public void setTotalPessoas(int novoTotal){
