@@ -1,6 +1,8 @@
 package br.ufsc.ine5605.models;
 
-public class Alien {
+import java.io.Serializable;
+
+public class Alien implements Serializable {
     private String name;
     private String clan;
 

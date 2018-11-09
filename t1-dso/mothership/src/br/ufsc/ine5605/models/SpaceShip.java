@@ -1,9 +1,10 @@
 package br.ufsc.ine5605.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpaceShip {
+public class SpaceShip implements Serializable {
     private Alien commander;
     private List<Alien> crew;
     private boolean isAvailable;

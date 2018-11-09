@@ -78,7 +78,7 @@ public class MissionMapper {
             objectInputStream.close();
             fileInputStream.close();
         }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -86,8 +86,8 @@ public class MissionMapper {
         if( contains(mission) && mission != null){
             missions.remove(mission.getId(), mission);
         }
+        save();
     }
-
 
 }
 

@@ -23,14 +23,14 @@ public class ShipsController implements Controller {
 
     public static ShipsController getInstance(){
         if( instance == null ){
-            return new ShipsController();
+            instance = new ShipsController();
         }
         return instance;
     }
 
     @Override
     public void configure(){
-        shipsScreen = new ShipsScreen(this);
+        shipsScreen = new ShipsScreen();
         spaceShips = new ArrayList<>();
     }
 

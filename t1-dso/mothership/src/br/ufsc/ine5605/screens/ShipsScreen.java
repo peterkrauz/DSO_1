@@ -10,11 +10,8 @@ import java.util.InputMismatchException;
 
 public class ShipsScreen extends Screen {
 
-    private ShipsController shipsController;
-
-    public ShipsScreen(ShipsController shipsController){
+    public ShipsScreen(){
         super();
-        this.shipsController = shipsController;
     }
 
     @Override
@@ -54,7 +51,7 @@ public class ShipsScreen extends Screen {
             try{
                 showMessage("Type in the id of the ship.");
                 id = scanner.nextInt();
-                if( shipsController.hasShipWithId(id) ){
+                if( ShipsController.getInstance().hasShipWithId(id) ){
                     showMessage("There is already a ship with this id. Please choose another.");
                     id = -1;
                 }
@@ -114,7 +111,7 @@ public class ShipsScreen extends Screen {
     public void displayFleet() {
         StringBuilder sb = new StringBuilder("===== Viewing Ships =====");
         int counter = 1;
-        for (SpaceShip spaceShip : shipsController.getSpaceShips()){
+        for (SpaceShip spaceShip : ShipsController.getInstance().getSpaceShips()){
             sb.append("\nShip: "+counter);
             sb.append("\nCommander: "+displayAlien(spaceShip.getCommander()));
             if( spaceShip.getCrew().isEmpty() ){
@@ -161,7 +158,7 @@ public class ShipsScreen extends Screen {
 
     public String displayShipsIds() {
         StringBuilder sb = new StringBuilder("Ship's ids on your fleet:\n");
-        for (SpaceShip spaceShip : shipsController.getSpaceShips()){
+        for (SpaceShip spaceShip : ShipsController.getInstance().getSpaceShips()){
             sb.append(spaceShip.getId()+"\t");
         }
         return sb.toString();
