@@ -5,6 +5,7 @@ import br.ufsc.ine5605.exceptions.*;
 import br.ufsc.ine5605.models.Mission;
 import br.ufsc.ine5605.models.MissionContent;
 import br.ufsc.ine5605.models.SpaceShip;
+import br.ufsc.ine5605.persistence.MissionMapper;
 import br.ufsc.ine5605.screens.MainScreen;
 
 import java.util.ArrayList;
@@ -13,14 +14,22 @@ import java.util.Random;
 
 public class MainController implements Controller{
 
-    private ShipsController shipsController;
+    public static MainController instance;
+
     private MainScreen mainScreen;
-    private List<Mission> missions;
+    private MissionMapper mapper;
     private boolean isRunning;
 
 
-    public MainController(){
+    private MainController(){
         configure();
+    }
+
+    public static MainController getInstance() {
+        if( instance == null ){
+            instance = new MainController();
+        }
+        return instance;
     }
 
     @Override
@@ -37,8 +46,7 @@ public class MainController implements Controller{
     @Override
     public void configure() {
         mainScreen = new MainScreen(this);
-        missions = new ArrayList<>();
-        shipsController = new ShipsController();
+        mapper = new MissionMapper();
     }
 
     @Override
@@ -60,7 +68,7 @@ public class MainController implements Controller{
                 handleRemoveMission();
                 break;
             case 6:
-                shipsController.run();
+                ShipsController.getInstance().run();
                 break;
             case 7:
                 mainScreen.showMessage("Finishing the MotherShip. Thank you for playing!");
@@ -73,7 +81,7 @@ public class MainController implements Controller{
     }
 
     private void handleMissionLogReading() {
-        if(missions.isEmpty()){
+        if(mapper.isEmpty()){
             mainScreen.showMessage("Currently, you have no missions. Register one and start it to be able to read its log.");
         } else {
             mainScreen.showMessage("== Choose a mission by id to read its log ==");
@@ -93,7 +101,7 @@ public class MainController implements Controller{
     }
 
     private void handleMissionDevelopment() {
-        if (missions.isEmpty()){
+        if (mapper.isEmpty()){
             mainScreen.showMessage("Currently, you have no missions. Register at least one to be able to develop it.");
         } else {
             mainScreen.showMessage("=== Choose by id a mission to develop. ===");
@@ -113,13 +121,13 @@ public class MainController implements Controller{
     private void developMission(Mission mission) {
         Random random = new Random();
         int event = random.nextInt(10);
-        if(event < 2){
+        if(event <= 1){
             mission.setState(MissionState.FAILURE);
             mainScreen.showMessage("A tragic event befell our loyal spaceship. Their scattered remains have been found far away from our closest star.\n Mission "+mission.getId()+" will no longer exist.");
             SpaceShip spaceShip = mission.getSpaceShip();
-            getShipsController().getSpaceShips().remove(spaceShip);
-            missions.remove(mission);
-        } else if(event > 1 && event <= 7){
+            ShipsController.getInstance().getSpaceShips().remove(spaceShip);
+            mapper.delete(mission);
+        } else if(event >= 2 && event <= 7){
             mission.setState(MissionState.ONGOING);
             mainScreen.showMessage("Status quo. Nothing good or bad happened to our crew. The spaceship "+mission.getId()+" remains on duty!");
             mission.writeLog("Status quo. Spaceship "+mission.getId()+" remains on mission.\n");
@@ -135,17 +143,13 @@ public class MainController implements Controller{
         return mainScreen.displayMissionsIds();
     }
 
+    // TODO
     public Mission getMissionById(int id){
-        for (Mission mission : missions){
-            if( mission.getId() == id){
-                return mission;
-            }
-        }
-        return null;
+        return mapper.get(id);
     }
 
     private void handleRemoveMission() {
-        if (missions.isEmpty()){
+        if (mapper.isEmpty()){
             mainScreen.showMessage("Currently, you have no missions. Register at least one to be able to remove it.");
         } else {
             try{
@@ -164,15 +168,15 @@ public class MainController implements Controller{
         } else {
             Mission mission = getMissionById(id);
             mission.getSpaceShip().setAvailable(true);
-            missions.remove(mission);
+            mapper.delete(mission);
         }
     }
 
     private void handleAddMission() {
-        if (getShipsController().getSpaceShips().isEmpty()){
+        if (ShipsController.getInstance().getSpaceShips().isEmpty()){
             mainScreen.showMessage("You need at least one ship in your fleet to be able to start a mission.\n");
         } else {
-            if( getShipsController().hasAvailableShip() ){
+            if( ShipsController.getInstance().hasAvailableShip() ){
                 addMission(unWrap(mainScreen.registerMission()));
             } else {
                 mainScreen.showMessage("All spaceships are already selected! Please register another to assign to a new mission.\n");
@@ -185,30 +189,30 @@ public class MainController implements Controller{
     }
 
     private void addMission(Mission mission) {
-        if(!missions.contains(mission) && mission != null){
-            missions.add(mission);
+        try{
+            if(!mapper.contains(mission) && mission != null){
+                mapper.put(mission);
+            }
+        }catch(DuplicateMissionException e){
+            mainScreen.showMessage(e.getMessage());
         }
     }
 
     private void displayMissions() {
-        if(missions.isEmpty()){
+        if(mapper.isEmpty()){
             mainScreen.showMessage("You have no missions registered. Register one to be able to see it.");
         } else {
             mainScreen.showMessage(mainScreen.displayMissions());
         }
     }
 
-    public ShipsController getShipsController() {
-        return shipsController;
-    }
-
     public List<Mission> getMissions() {
-        return missions;
+        return mapper.getMissions();
     }
 
     public int handleShipSelectionForMission(int shipId) throws UnexistantShipException, ShipUnavailableException{
-        if( getShipsController().hasShipWithId(shipId) ){
-            if ( getShipsController().getShipById(shipId).isAvailable() ){
+        if( ShipsController.getInstance().hasShipWithId(shipId) ){
+            if ( ShipsController.getInstance().getShipById(shipId).isAvailable() ){
                 return shipId;
             } else {
                 throw new ShipUnavailableException("Ship "+shipId+" is unavailable. Please retry.");

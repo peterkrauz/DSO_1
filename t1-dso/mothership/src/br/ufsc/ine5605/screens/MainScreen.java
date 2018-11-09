@@ -2,6 +2,7 @@ package br.ufsc.ine5605.screens;
 
 import br.ufsc.ine5605.controllers.MainController;
 import br.ufsc.ine5605.constants.MissionState;
+import br.ufsc.ine5605.controllers.ShipsController;
 import br.ufsc.ine5605.exceptions.MissionCompletedException;
 import br.ufsc.ine5605.exceptions.UnexistantMissionException;
 import br.ufsc.ine5605.models.Mission;
@@ -75,7 +76,7 @@ public class MainScreen extends Screen{
                 showMessage(e.getMessage());
             }
         }
-        SpaceShip spaceShip = mainController.getShipsController().getShipById(shipId);
+        SpaceShip spaceShip = ShipsController.getInstance().getShipById(shipId);
         showMessage("Ship "+shipId+" selected!");
         while( missionId == -1 ){
             showMessage("Type in the new id for this mission...");
@@ -100,9 +101,9 @@ public class MainScreen extends Screen{
     }
 
     private String displayShipIds() {
-        if(!mainController.getShipsController().getSpaceShips().isEmpty()){
+        if(!ShipsController.getInstance().getSpaceShips().isEmpty()){
             StringBuilder sb = new StringBuilder("Available Ids:\n");
-            for (SpaceShip spaceShip : mainController.getShipsController().getSpaceShips()){
+            for (SpaceShip spaceShip : ShipsController.getInstance().getSpaceShips()){
                 if (spaceShip.isAvailable()) {
                     sb.append(spaceShip.getId()+"\t");
                 }

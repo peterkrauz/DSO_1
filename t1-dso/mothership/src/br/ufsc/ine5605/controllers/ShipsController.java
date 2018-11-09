@@ -11,12 +11,21 @@ import java.util.List;
 
 public class ShipsController implements Controller {
 
+    private static ShipsController instance;
+
     private List<SpaceShip> spaceShips;
     private ShipsScreen shipsScreen;
     private boolean isRunning;
 
-    public ShipsController() {
+    private ShipsController() {
         configure();
+    }
+
+    public static ShipsController getInstance(){
+        if( instance == null ){
+            return new ShipsController();
+        }
+        return instance;
     }
 
     @Override

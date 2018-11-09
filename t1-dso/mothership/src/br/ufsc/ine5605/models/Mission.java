@@ -2,7 +2,9 @@ package br.ufsc.ine5605.models;
 
 import br.ufsc.ine5605.constants.MissionState;
 
-public class Mission {
+import java.io.Serializable;
+
+public class Mission implements Serializable {
     private String description;
     private String log;
     private boolean isCompleted;
