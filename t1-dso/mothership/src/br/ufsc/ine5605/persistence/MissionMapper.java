@@ -25,7 +25,7 @@ public class MissionMapper {
 
     public void put(Mission mission) throws DuplicateMissionException {
         if(missions.containsKey(mission.getId())){
-            throw new DuplicateMissionException("There is already an id with id "+mission.getId());
+            throw new DuplicateMissionException("There is already a mission with id "+mission.getId());
         }
         missions.put(mission.getId(), mission);
         save();
