@@ -1,13 +1,15 @@
 package br.ufsc.ine5605.screens;
 
+import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public abstract class Screen {
+public abstract class Screen extends JFrame {
 
     public Scanner scanner;
 
-    public Screen(){
+    public Screen(String title){
+        super(title);
         scanner = new Scanner(System.in);
     }
 

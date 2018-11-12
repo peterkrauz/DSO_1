@@ -45,7 +45,7 @@ public class MainController implements Controller{
 
     @Override
     public void configure() {
-        mainScreen = new MainScreen(this);
+        mainScreen = new MainScreen();
         mapper = new MissionMapper();
     }
 
@@ -121,13 +121,13 @@ public class MainController implements Controller{
     private void developMission(Mission mission) {
         Random random = new Random();
         int event = random.nextInt(10);
-        if(event < 2){
+        if(event <= 1){
             mission.setState(MissionState.FAILURE);
             mainScreen.showMessage("A tragic event befell our loyal spaceship. Their scattered remains have been found far away from our closest star.\n Mission "+mission.getId()+" will no longer exist.");
             SpaceShip spaceShip = mission.getSpaceShip();
             ShipsController.getInstance().getSpaceShips().remove(spaceShip);
             mapper.delete(mission);
-        } else if(event > 1 && event <= 7){
+        } else if(event >= 2 && event <= 7){
             mission.setState(MissionState.ONGOING);
             mainScreen.showMessage("Status quo. Nothing good or bad happened to our crew. The spaceship "+mission.getId()+" remains on duty!");
             mission.writeLog("Status quo. Spaceship "+mission.getId()+" remains on mission.\n");

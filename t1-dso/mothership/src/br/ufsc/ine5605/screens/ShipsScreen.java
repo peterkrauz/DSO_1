@@ -11,7 +11,7 @@ import java.util.InputMismatchException;
 public class ShipsScreen extends Screen {
 
     public ShipsScreen(){
-        super();
+        super("Ships Screen");
     }
 
     @Override

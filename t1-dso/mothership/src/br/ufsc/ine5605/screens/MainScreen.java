@@ -9,15 +9,48 @@ import br.ufsc.ine5605.models.Mission;
 import br.ufsc.ine5605.models.MissionContent;
 import br.ufsc.ine5605.models.SpaceShip;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 
 public class MainScreen extends Screen{
 
-    private MainController mainController;
+    public MainScreen(){
+        super("Missions Screen");
+        Container container = getContentPane();
+        container.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
 
-    public MainScreen(MainController mainController){
-        super();
-        this.mainController = mainController;
+        JLabel title = new JLabel("Welcome. Choose an option.");
+
+        String[] options = new String[]{"Enter Ships Panel","Add Mission", "View Missions",
+                                        "Remove Mission", "Develop Mission",
+                                        "Read Mission Log", "Quit the Mothership"};
+
+        constraints.gridy = 0;
+        getContentPane().add(title, constraints);
+
+        renderMenu(options, new MissionButtonHandler());
+
+        setSize(550, 400);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    private void renderMenu(String[] options, MissionButtonHandler mbh) {
+        GridBagConstraints constraints = new GridBagConstraints();
+        for( int i=0; i<options.length; i++ ){
+            JButton jButton = new JButton(options[i]);
+            jButton.setPreferredSize(new Dimension(200, 30));
+            jButton.addActionListener(mbh);
+            constraints.gridy = i+1;
+            getContentPane().add(jButton, constraints);
+        }
     }
 
     public void welcomeScreen(){
@@ -52,13 +85,20 @@ public class MainScreen extends Screen{
 
     public String displayMissions(){
         StringBuilder sb = new StringBuilder("==== Viewing Missions ====\n");
-        for (Mission mission : mainController.getMissions()){
-            sb.append("\nMission nº"+mission.getId());
-            sb.append("\nDescription: "+mission.getDescription());
-            sb.append("\nCommander: "+mission.getSpaceShip().getCommander().getName());
-            sb.append("\nSpaceship: "+mission.getSpaceShip().getId());
-            sb.append("\nMission status: "+mission.getState().getMessage()+"\n");
-        }
+        List<Mission> missions = MainController.getInstance().getMissions();
+        missions.forEach(mission -> sb.append("\nMission nº"+mission.getId()
+                +"\nDescription: "+mission.getDescription()
+                +"\nCommander: "+mission.getSpaceShip().getCommander().getName()
+                +"\nSpaceship: "+mission.getSpaceShip().getId()
+                +"\nMission status: "+mission.getState().getMessage()+"\n")
+        );
+//        for (Mission mission : MainController.getInstance().getMissions()){
+//            sb.append("\nMission nº"+mission.getId());
+//            sb.append("\nDescription: "+mission.getDescription());
+//            sb.append("\nCommander: "+mission.getSpaceShip().getCommander().getName());
+//            sb.append("\nSpaceship: "+mission.getSpaceShip().getId());
+//            sb.append("\nMission status: "+mission.getState().getMessage()+"\n");
+//        }
         return sb.toString();
     }
 
@@ -71,7 +111,7 @@ public class MainScreen extends Screen{
             showMessage("Select the id for this mission's ship...");
             showMessage(displayShipIds());
             try{
-                shipId = mainController.handleShipSelectionForMission(askId());
+                shipId = MainController.getInstance().handleShipSelectionForMission(askId());
             }catch(Exception e){
                 showMessage(e.getMessage());
             }
@@ -81,7 +121,7 @@ public class MainScreen extends Screen{
         while( missionId == -1 ){
             showMessage("Type in the new id for this mission...");
             try{
-                missionId = mainController.handleMissionExistence(askId());
+                missionId = MainController.getInstance().handleMissionExistence(askId());
             }catch(Exception e){
                 showMessage(e.getMessage());
             }
@@ -116,10 +156,10 @@ public class MainScreen extends Screen{
 
     public String displayMissionsIds() {
         StringBuilder sb = new StringBuilder("Available Ids: \n");
-        if(mainController.getMissions().isEmpty()){
+        if(MainController.getInstance().getMissions().isEmpty()){
             return "There are no missions, thus there are no id's. Register a mission first.";
         } else {
-            for (Mission mission : mainController.getMissions()){
+            for (Mission mission : MainController.getInstance().getMissions()){
                 if(mission.getState() != MissionState.SUCCESSFULL){
                     sb.append(mission.getId()+"\t");
                 }
@@ -129,14 +169,22 @@ public class MainScreen extends Screen{
     }
 
     public String displayMissionsIdsForLogReading() {
-        if(mainController.getMissions().isEmpty()){
+        if(MainController.getInstance().getMissions().isEmpty()){
             return "There are no missions, thus there are no id's. Register a mission first.";
         } else {
             StringBuilder sb = new StringBuilder("Available Ids: \n");
-            for (Mission mission : mainController.getMissions()){
+            for (Mission mission : MainController.getInstance().getMissions()){
                 sb.append(mission.getId()+"\t");
             }
             return sb.toString();
+        }
+    }
+
+    class MissionButtonHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(getContentPane(), e.getActionCommand());
         }
     }
 }
