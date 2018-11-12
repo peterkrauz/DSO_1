@@ -34,5 +34,17 @@ public abstract class Screen extends JFrame {
         return id;
     }
 
+    public void showDialog(String message){
+        JOptionPane.showMessageDialog(getContentPane(), message);
+    }
+
+    public void showDialog(String message, String title){
+        JOptionPane.showMessageDialog(getContentPane(), message, title, 1);
+    }
+
+    public void showInputDialog(){
+        JOptionPane.showMessageDialog(getContentPane(), "a");
+    }
+
 }
 

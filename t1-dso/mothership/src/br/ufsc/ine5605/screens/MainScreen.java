@@ -20,7 +20,7 @@ import java.util.List;
 public class MainScreen extends Screen{
 
     public MainScreen(){
-        super("Missions Screen");
+        super("Mothership");
         Container container = getContentPane();
         container.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -31,10 +31,15 @@ public class MainScreen extends Screen{
                                         "Remove Mission", "Develop Mission",
                                         "Read Mission Log", "Quit the Mothership"};
 
+        String[] toolTips = new String[]{"Will redirect to the Ships Screen", "A dialog to register a mission will appear",
+                                         "A table will appear, displaying all the registered missions", "A dialog to remove a mission will appear",
+                                         "A dialog will appear to get the mission id to be developed", "A dialog will appear to get the mission id to have it's log read",
+                                         "The program will finish."};
+
         constraints.gridy = 0;
         getContentPane().add(title, constraints);
 
-        renderMenu(options, new MissionButtonHandler());
+        renderMenu(options, toolTips, new MissionButtonHandler());
 
         setSize(550, 400);
         setLocationRelativeTo(null);
@@ -42,12 +47,13 @@ public class MainScreen extends Screen{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    private void renderMenu(String[] options, MissionButtonHandler mbh) {
+    private void renderMenu(String[] options, String[] toolTips, MissionButtonHandler mbh) {
         GridBagConstraints constraints = new GridBagConstraints();
         for( int i=0; i<options.length; i++ ){
             JButton jButton = new JButton(options[i]);
             jButton.setPreferredSize(new Dimension(200, 30));
             jButton.addActionListener(mbh);
+            jButton.setToolTipText(toolTips[i]);
             constraints.gridy = i+1;
             getContentPane().add(jButton, constraints);
         }
@@ -181,10 +187,18 @@ public class MainScreen extends Screen{
     }
 
     class MissionButtonHandler implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(getContentPane(), e.getActionCommand());
+
+            switch (e.getActionCommand()){
+                case "Enter Ships Panel":
+                    showDialog("ENTRO NOS BARQUINNNNNN KKKK");
+                    break;
+                case "Add Mission":
+                    showDialog("eita nois >.<", "vSFFF");
+                    break;
+            }
+
         }
     }
 }
