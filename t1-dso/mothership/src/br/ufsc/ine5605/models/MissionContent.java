@@ -1,10 +1,11 @@
 package br.ufsc.ine5605.models;
 
-public class MissionContent {
+public class MissionContent extends Content{
 
     public String description;
     public int id;
     public SpaceShip spaceShip;
+    public int spaceShipId;
 
     public MissionContent(){}
 

@@ -3,7 +3,7 @@ package br.ufsc.ine5605.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShipContent {
+public class ShipContent extends Content{
 
     public Alien commander;
     public List<Alien> crew;

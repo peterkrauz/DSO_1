@@ -8,6 +8,8 @@ public abstract class Screen extends JFrame {
 
     public Scanner scanner;
 
+    public Screen(){}
+
     public Screen(String title){
         super(title);
         scanner = new Scanner(System.in);

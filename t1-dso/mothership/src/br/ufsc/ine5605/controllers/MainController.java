@@ -2,13 +2,10 @@ package br.ufsc.ine5605.controllers;
 
 import br.ufsc.ine5605.constants.MissionState;
 import br.ufsc.ine5605.exceptions.*;
-import br.ufsc.ine5605.models.Mission;
-import br.ufsc.ine5605.models.MissionContent;
-import br.ufsc.ine5605.models.SpaceShip;
+import br.ufsc.ine5605.models.*;
 import br.ufsc.ine5605.persistence.MissionMapper;
 import br.ufsc.ine5605.screens.MainScreen;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -23,6 +20,7 @@ public class MainController implements Controller{
 
     private MainController(){
         configure();
+        ShipsController.getInstance().addShipForTest(new SpaceShip(new ShipContent(new Alien("Test", "Testers"), 46)));
     }
 
     public static MainController getInstance() {
@@ -62,7 +60,7 @@ public class MainController implements Controller{
                 handleMissionLogReading();
                 break;
             case 4:
-                handleAddMission();
+                handleRegisterMission();
                 break;
             case 5:
                 handleRemoveMission();
@@ -172,14 +170,14 @@ public class MainController implements Controller{
         }
     }
 
-    private void handleAddMission() {
+    public void handleRegisterMission() {
         if (ShipsController.getInstance().getSpaceShips().isEmpty()){
-            mainScreen.showMessage("You need at least one ship in your fleet to be able to start a mission.\n");
+            mainScreen.showDialog("You need at least one ship in your fleet to be able to start a mission.\n");
         } else {
             if( ShipsController.getInstance().hasAvailableShip() ){
-                addMission(unWrap(mainScreen.registerMission()));
+                RegisterController.getInstance().showMissionRegisterScreen();
             } else {
-                mainScreen.showMessage("All spaceships are already selected! Please register another to assign to a new mission.\n");
+                mainScreen.showDialog("All spaceships are already selected! Please register another to assign to a new mission.\n");
             }
         }
     }
@@ -188,7 +186,25 @@ public class MainController implements Controller{
         return new Mission(content);
     }
 
-    private void addMission(Mission mission) {
+    public void addMission(MissionContent missionContent){
+        Mission mission = unWrap(missionContent);
+
+        mission.setSpaceShip(ShipsController.getInstance().getShipById(missionContent.spaceShipId));
+        mission.getSpaceShip().setId(missionContent.spaceShipId);
+        mission.getSpaceShip().setAvailable(false);
+
+        try{
+            if(!mapper.contains(mission) && mission != null){
+                mapper.put(mission);
+            }
+        }catch(DuplicateMissionException e){
+            mainScreen.showMessage(e.getMessage());
+        }
+
+        mainScreen.sync(mission);
+    }
+
+    public void addMission(Mission mission) {
         try{
             if(!mapper.contains(mission) && mission != null){
                 mapper.put(mission);
@@ -249,5 +265,16 @@ public class MainController implements Controller{
             }
         }
     }
-    
+
+    public boolean idIsNotTaken(int i) {
+        return !ShipsController.getInstance().hasShipWithId(i);
+    }
+
+    public boolean idExistsInFleet(int i) {
+        return ShipsController.getInstance().getShipById(i) != null;
+    }
+
+    public void handleGetIdToRemove() {
+        RegisterController.getInstance().showScreenForMissionRemoval();
+    }
 }

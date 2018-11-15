@@ -3,45 +3,60 @@ package br.ufsc.ine5605.screens;
 import br.ufsc.ine5605.controllers.MainController;
 import br.ufsc.ine5605.constants.MissionState;
 import br.ufsc.ine5605.controllers.ShipsController;
-import br.ufsc.ine5605.exceptions.MissionCompletedException;
-import br.ufsc.ine5605.exceptions.UnexistantMissionException;
 import br.ufsc.ine5605.models.Mission;
 import br.ufsc.ine5605.models.MissionContent;
 import br.ufsc.ine5605.models.SpaceShip;
+import sun.applet.Main;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 
 public class MainScreen extends Screen{
 
+    DefaultTableModel defaultTableModel;
+
     public MainScreen(){
         super("Mothership");
-        Container container = getContentPane();
-        container.setLayout(new GridBagLayout());
+        getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
 
         JLabel title = new JLabel("Welcome. Choose an option.");
 
-        String[] options = new String[]{"Enter Ships Panel","Add Mission", "View Missions",
+        String[] options = new String[]{"Enter Ships Panel","Add Mission",
                                         "Remove Mission", "Develop Mission",
                                         "Read Mission Log", "Quit the Mothership"};
 
-        String[] toolTips = new String[]{"Will redirect to the Ships Screen", "A dialog to register a mission will appear",
-                                         "A table will appear, displaying all the registered missions", "A dialog to remove a mission will appear",
+        String[] toolTips = new String[]{"Will redirect to the Ships Screen", "A dialog to register a mission will appear", "A dialog to remove a mission will appear",
                                          "A dialog will appear to get the mission id to be developed", "A dialog will appear to get the mission id to have it's log read",
                                          "The program will finish."};
 
         constraints.gridy = 0;
         getContentPane().add(title, constraints);
 
+        defaultTableModel = new DefaultTableModel();
+        defaultTableModel.addColumn("ID");
+        defaultTableModel.addColumn("Description");
+        defaultTableModel.addColumn("SpaceShip ID");
+        defaultTableModel.addColumn("State");
+        defaultTableModel.addColumn("Completed");
+
+        JTable jTable = new JTable();
+        jTable.setPreferredScrollableViewportSize(new Dimension(550, 350));
+        jTable.setModel(defaultTableModel);
+        JScrollPane jScrollPane = new JScrollPane(jTable);
+        jScrollPane.setPreferredSize(new Dimension(550, 200));
+
+        constraints.gridy = 2;
+        getContentPane().add(jScrollPane, constraints);
+
         renderMenu(options, toolTips, new MissionButtonHandler());
 
-        setSize(550, 400);
+        setSize(600, 450);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -54,7 +69,7 @@ public class MainScreen extends Screen{
             jButton.setPreferredSize(new Dimension(200, 30));
             jButton.addActionListener(mbh);
             jButton.setToolTipText(toolTips[i]);
-            constraints.gridy = i+1;
+            constraints.gridy = i+3;
             getContentPane().add(jButton, constraints);
         }
     }
@@ -186,16 +201,49 @@ public class MainScreen extends Screen{
         }
     }
 
+    public void refreshMissionTable() {
+        for( Mission m : MainController.getInstance().getMissions() ){
+            defaultTableModel.addRow(new Object[]{m.getId(),
+                    m.getDescription(),
+                    m.getSpaceShip().getId(),
+                    m.getState(),
+                    m.isCompleted()});
+        }
+        repaint();
+    }
+
+    public void sync(Mission mission) {
+        defaultTableModel.addRow(new Object[]{mission.getId(),
+                mission.getDescription(),
+                mission.getSpaceShip().getId(),
+                mission.getState(),
+                mission.isCompleted()});
+    }
+
     class MissionButtonHandler implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
             switch (e.getActionCommand()){
                 case "Enter Ships Panel":
-                    showDialog("ENTRO NOS BARQUINNNNNN KKKK");
+                    showDialog(e.getActionCommand());
                     break;
                 case "Add Mission":
-                    showDialog("eita nois >.<", "vSFFF");
+                    showDialog(e.getActionCommand());
+                    MainController.getInstance().handleRegisterMission();
+                    break;
+                case "Remove Mission":
+                    showDialog(e.getActionCommand());
+                    MainController.getInstance().handleGetIdToRemove();
+                    break;
+                case "Develop Mission":
+                    showDialog(e.getActionCommand());
+                    break;
+                case "Read Mission Log":
+                    showDialog(e.getActionCommand());
+                    break;
+                case "Quit the Mothership":
+                    showDialog(e.getActionCommand());
                     break;
             }
 
