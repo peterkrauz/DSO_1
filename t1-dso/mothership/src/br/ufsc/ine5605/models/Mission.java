@@ -10,6 +10,7 @@ public class Mission implements Serializable {
     private boolean isCompleted;
     private int id;
     private SpaceShip spaceShip;
+    private int spaceShipId;
     private MissionState state;
 
     public Mission(){
@@ -20,9 +21,18 @@ public class Mission implements Serializable {
         this.description = content.description;
         this.id = content.id;
         this.spaceShip = content.spaceShip;
+        this.spaceShipId = content.spaceShipId;
         this.log = "";
         this.state = MissionState.STARTED;
         this.isCompleted = false;
+    }
+
+    public int getSpaceShipId() {
+        return spaceShipId;
+    }
+
+    public void setSpaceShipId(int spaceShipId) {
+        this.spaceShipId = spaceShipId;
     }
 
     public String getDescription() {

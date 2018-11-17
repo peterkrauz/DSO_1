@@ -23,7 +23,6 @@ public class ShipsMapper {
     public void put(SpaceShip spaceship) {
         spaceships.put(spaceship.getId(), spaceship);
         save();
-
     }
 
     public SpaceShip get(Integer key){

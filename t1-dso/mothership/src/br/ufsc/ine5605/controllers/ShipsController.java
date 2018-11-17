@@ -30,6 +30,10 @@ public class ShipsController implements Controller {
         return instance;
     }
 
+    public void save() {
+        mapper.save();
+    }
+
     @Override
     public void configure(){
         shipsScreen = new ShipsScreen();

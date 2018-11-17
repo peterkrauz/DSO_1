@@ -4,9 +4,6 @@ import br.ufsc.ine5605.controllers.MainController;
 import br.ufsc.ine5605.constants.MissionState;
 import br.ufsc.ine5605.controllers.ShipsController;
 import br.ufsc.ine5605.models.Mission;
-import br.ufsc.ine5605.models.MissionContent;
-import br.ufsc.ine5605.models.SpaceShip;
-import sun.applet.Main;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +16,7 @@ import java.util.List;
 public class MainScreen extends Screen{
 
     DefaultTableModel defaultTableModel;
+    JTable jTable;
 
     public MainScreen(){
         super("Mothership");
@@ -29,11 +27,10 @@ public class MainScreen extends Screen{
 
         String[] options = new String[]{"Enter Ships Panel","Add Mission",
                                         "Remove Mission", "Develop Mission",
-                                        "Read Mission Log", "Quit the Mothership"};
+                                        "Read Mission Log"};
 
         String[] toolTips = new String[]{"Will redirect to the Ships Screen", "A dialog to register a mission will appear", "A dialog to remove a mission will appear",
-                                         "A dialog will appear to get the mission id to be developed", "A dialog will appear to get the mission id to have it's log read",
-                                         "The program will finish."};
+                                         "A dialog will appear to get the mission id to be developed", "A dialog will appear to get the mission id to have it's log read"};
 
         constraints.gridy = 0;
         getContentPane().add(title, constraints);
@@ -45,7 +42,7 @@ public class MainScreen extends Screen{
         defaultTableModel.addColumn("State");
         defaultTableModel.addColumn("Completed");
 
-        JTable jTable = new JTable();
+        jTable = new JTable();
         jTable.setPreferredScrollableViewportSize(new Dimension(550, 350));
         jTable.setModel(defaultTableModel);
         JScrollPane jScrollPane = new JScrollPane(jTable);
@@ -57,6 +54,7 @@ public class MainScreen extends Screen{
         renderMenu(options, toolTips, new MissionButtonHandler());
 
         setSize(600, 450);
+        setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -123,35 +121,6 @@ public class MainScreen extends Screen{
         return sb.toString();
     }
 
-    public MissionContent registerMission(){
-        showMessage("======== Mission Register Panel ========");
-        showMessage("Type in this mission's brief description");
-        String description = scanner.next();
-        int shipId = -1, missionId = -1;
-        while ( shipId == -1 ) {
-            showMessage("Select the id for this mission's ship...");
-            showMessage(displayShipIds());
-            try{
-                shipId = MainController.getInstance().handleShipSelectionForMission(askId());
-            }catch(Exception e){
-                showMessage(e.getMessage());
-            }
-        }
-        SpaceShip spaceShip = ShipsController.getInstance().getShipById(shipId);
-        showMessage("Ship "+shipId+" selected!");
-        while( missionId == -1 ){
-            showMessage("Type in the new id for this mission...");
-            try{
-                missionId = MainController.getInstance().handleMissionExistence(askId());
-            }catch(Exception e){
-                showMessage(e.getMessage());
-            }
-        }
-        showMessage("Spaceship "+spaceShip.getId()+" selected for mission "+missionId);
-        spaceShip.setAvailable(false);
-        return new MissionContent(description, missionId, spaceShip);
-    }
-
     public void displayRemovePanel() {
         showMessage("======== Mission Removal Panel =========");
         showMessage("Type in the id of the mission to-be removed\n");
@@ -159,20 +128,6 @@ public class MainScreen extends Screen{
 
     public int askId() {
         return super.askId();
-    }
-
-    private String displayShipIds() {
-        if(!ShipsController.getInstance().getSpaceShips().isEmpty()){
-            StringBuilder sb = new StringBuilder("Available Ids:\n");
-            for (SpaceShip spaceShip : ShipsController.getInstance().getSpaceShips()){
-                if (spaceShip.isAvailable()) {
-                    sb.append(spaceShip.getId()+"\t");
-                }
-            }
-            return sb.toString();
-        } else {
-            return "There are no ships, thus there are no id's. Register a ship first.";
-        }
     }
 
     public String displayMissionsIds() {
@@ -201,23 +156,27 @@ public class MainScreen extends Screen{
         }
     }
 
-    public void refreshMissionTable() {
-        for( Mission m : MainController.getInstance().getMissions() ){
-            defaultTableModel.addRow(new Object[]{m.getId(),
-                    m.getDescription(),
-                    m.getSpaceShip().getId(),
-                    m.getState(),
-                    m.isCompleted()});
-        }
-        repaint();
-    }
-
     public void sync(Mission mission) {
         defaultTableModel.addRow(new Object[]{mission.getId(),
                 mission.getDescription(),
                 mission.getSpaceShip().getId(),
                 mission.getState(),
                 mission.isCompleted()});
+    }
+
+    public void refresh(int id) {
+        for( int i=0; i<defaultTableModel.getRowCount(); i++ ){
+            if( defaultTableModel.getValueAt(i, 0).equals(id) ){
+                defaultTableModel.removeRow(i);
+            }
+        }
+    }
+
+    public void refreshTable() {
+        defaultTableModel.setRowCount(0);
+        for( Mission m : MainController.getInstance().getMissions() ){
+             sync(m);
+        }
     }
 
     class MissionButtonHandler implements ActionListener {
@@ -229,21 +188,32 @@ public class MainScreen extends Screen{
                     showDialog(e.getActionCommand());
                     break;
                 case "Add Mission":
-                    showDialog(e.getActionCommand());
-                    MainController.getInstance().handleRegisterMission();
+                    if( ShipsController.getInstance().hasAvailableShip() ){
+                        MainController.getInstance().handleRegisterMission();
+                    } else {
+                        showDialog("All spaceships are taken! \nPlease, register a new one in order to create a new mission.");
+                    }
                     break;
                 case "Remove Mission":
-                    showDialog(e.getActionCommand());
-                    MainController.getInstance().handleGetIdToRemove();
+                    if( MainController.getInstance().hasMissionsToRemove() ){
+                        MainController.getInstance().handleGetIdToRemove();
+                    } else {
+                        showDialog("Currently, you have no missions registered or you have just Successful missions. \nPlease add a new one first to be able to remove it!");
+                    }
                     break;
                 case "Develop Mission":
-                    showDialog(e.getActionCommand());
+                    if( MainController.getInstance().hasMissionsToDevelop() ){
+                        MainController.getInstance().handleGetIdToDevelop();
+                    } else {
+                        showDialog("Currently, you have no missions available for development. \nPlease register a new one.");
+                    }
                     break;
                 case "Read Mission Log":
-                    showDialog(e.getActionCommand());
-                    break;
-                case "Quit the Mothership":
-                    showDialog(e.getActionCommand());
+                    if( MainController.getInstance().hasMissionsToReadLog() ){
+                        MainController.getInstance().handleGetIdToReadLog();
+                    } else {
+                        showDialog("Currently, you either no missions registered or un-developed missions.\nRegister a new mission, or a develop one!");
+                    }
                     break;
             }
 

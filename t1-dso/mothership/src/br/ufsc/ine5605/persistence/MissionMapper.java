@@ -53,7 +53,7 @@ public class MissionMapper {
         return missions.isEmpty();
     }
 
-    private void save() {
+    public void save() {
         try{
             FileOutputStream fileOutputStream = new FileOutputStream(FILENAME);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

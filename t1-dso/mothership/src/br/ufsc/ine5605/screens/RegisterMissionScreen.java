@@ -1,12 +1,11 @@
 package br.ufsc.ine5605.screens;
 
 import br.ufsc.ine5605.controllers.MainController;
-import br.ufsc.ine5605.controllers.RegisterController;
+import br.ufsc.ine5605.controllers.SwingScreensController;
 import br.ufsc.ine5605.controllers.ShipsController;
 import br.ufsc.ine5605.exceptions.EmptyFieldsException;
 import br.ufsc.ine5605.exceptions.FieldsWithIncorrectValuesException;
 import br.ufsc.ine5605.models.MissionContent;
-import sun.applet.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -79,7 +78,7 @@ public class RegisterMissionScreen extends Screen{
     }
 
     public void showMissionRegisterScreen() {
-        if( hasCreatedAlready == true ){
+        if( hasCreatedAlready ){
             missionIdTextField.setText("");
             missionDescriptionTextField.setText("");
             spaceShipIdTextField.setText("");
@@ -93,12 +92,17 @@ public class RegisterMissionScreen extends Screen{
             renderScreen();
             setButtonListeners();
 
+
             hasCreatedAlready = true;
             setResizable(false);
             setSize(new Dimension(420, 250));
+            setLocationRelativeTo(null);
             setVisible(true);
-            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         }
+    }
+
+    private boolean hasEmptyFields() {
+        return missionDescriptionTextField.getText().isEmpty() || missionIdTextField.getText().isEmpty() || spaceShipIdTextField.getText().isEmpty();
     }
 
     private void setButtonListeners() {
@@ -109,7 +113,7 @@ public class RegisterMissionScreen extends Screen{
                 }catch(EmptyFieldsException exception){
                     showDialog(exception.getMessage());
                 }
-            } else if( !fieldsHaveCorrectValues() ){
+            } else if( !fieldsHaveCorrectValues(true) ){
                 try{
                     throw new FieldsWithIncorrectValuesException();
                 }catch(FieldsWithIncorrectValuesException exception){
@@ -126,33 +130,36 @@ public class RegisterMissionScreen extends Screen{
                 missionContent.spaceShipId = Integer.parseInt(spaceShipIdTextField.getText());
                 missionContent.id = Integer.parseInt(missionIdTextField.getText());
                 missionContent.description = missionDescriptionTextField.getText();
-                RegisterController.getInstance().setMissionContent(missionContent);
+                SwingScreensController.getInstance().setMissionContent(missionContent);
                 setVisible(false);
             }
         });
     }
 
-    private boolean fieldsHaveCorrectValues() {
-        try{
-            Integer.parseInt(missionIdTextField.getText()); // should parse to an integer
-        }catch (NumberFormatException e){
-            showDialog("A mission id should have a numeric value, and not \""+missionIdTextField.getText()+"\". Please, change it.");
+    private boolean fieldsHaveCorrectValues(boolean isRegisterScreen) {
+        if( isRegisterScreen ){
+            try{
+                Integer.parseInt(missionIdTextField.getText()); // should parse to an integer
+            }catch (NumberFormatException e){
+                showDialog("A mission id should have a numeric value, and not \""+missionIdTextField.getText()+"\". Please, change it.");
+            }
+
+            try{
+                Integer.parseInt(spaceShipIdTextField.getText()); // should parse to an integer
+            }catch (NumberFormatException e){
+                showDialog("A spaceship's id should have a numeric value, and not \""+spaceShipIdTextField.getText()+"\". Please, change it.");
+            }
+
+            return true;
+        } else {
+            try{
+                Integer.parseInt(missionIdTextField.getText());
+            }catch(NumberFormatException e){
+                showDialog("A mission id should have a numeric value, and not \""+missionIdTextField.getText()+"\". Please, change it.");
+            }
+
+            return true;
         }
-
-        try{
-            Integer.parseInt(spaceShipIdTextField.getText()); // should parse to an integer
-        }catch (NumberFormatException e){
-            showDialog("A spaceship's id should have a numeric value, and not \""+spaceShipIdTextField.getText()+"\". Please, change it.");
-        }
-
-        return true;
     }
 
-    private boolean hasEmptyFields() {
-        return missionDescriptionTextField.getText().isEmpty() || missionIdTextField.getText().isEmpty() || spaceShipIdTextField.getText().isEmpty();
-    }
-
-    public void showScreenForMissionRemoval() {
-        // TODO
-    }
 }
