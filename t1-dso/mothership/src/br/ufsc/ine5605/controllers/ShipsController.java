@@ -92,8 +92,7 @@ public class ShipsController implements Controller {
     }
 
     private void update(SpaceShip oldShip, SpaceShip updatedShip) {
-      mapper.put(updatedShip);
-      // mapper.set(mapper.indexOf(oldShip), updatedShip);
+      // TODO
     }
 
     private void handleShipRemoval() {
@@ -184,8 +183,28 @@ public class ShipsController implements Controller {
         return false;
     }
 
-    // test purposes
     public void addShipForTest(SpaceShip spaceShip) {
         mapper.put(spaceShip);
+    }
+
+    public void openShipsPanel() {
+        shipsScreen.openShipsPanel();
+    }
+
+    public boolean hasAvailableShipToUpdate() {
+        return mapper.getSpaceships().stream().filter(s -> s.isAvailable()).count() > 0;
+    }
+
+    public void handleRegisterShip() {
+        SwingScreensController.getInstance().showSpaceShipRegisterScreen();
+    }
+
+    public void saveShipState(int spaceShipId){
+        for( SpaceShip s : mapper.getSpaceships() ){
+            if( s.getId() == spaceShipId ){
+                s.setAvailable(false);
+                save();
+            }
+        }
     }
 }

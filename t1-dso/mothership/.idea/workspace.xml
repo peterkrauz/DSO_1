@@ -53,44 +53,109 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="LogReadScreen.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/LogReadScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="56" column="44" lean-forward="true" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#fieldsHaveCorrectValues#0;class#LogReadScreen#0" />
-                <element signature="method#renderScreen#0;class#LogReadScreen#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="288" column="33" lean-forward="true" selection-start-line="288" selection-start-column="33" selection-end-line="288" selection-end-column="33" />
+            <state relative-caret-position="175">
+              <caret line="210" column="78" selection-start-line="210" selection-start-column="78" selection-end-line="210" selection-end-column="78" />
               <folding>
                 <element signature="method#MainController#0;class#MainController#0" />
                 <element signature="method#syncTable#0;class#MainController#0" />
                 <element signature="method#syncInMissionsAndShips#0;class#MainController#0" />
                 <element signature="method#getInstance#0;class#MainController#0" />
                 <element signature="method#run#0;class#MainController#0" />
-                <element signature="method#configure#0;class#MainController#0" />
                 <element signature="method#executeUserChoice#0;class#MainController#0" />
+                <element signature="e#2533#2534#0" expanded="true" />
+                <element signature="e#2581#2582#0" expanded="true" />
                 <element signature="method#handleMissionLogReading#0;class#MainController#0" />
                 <element signature="method#handleMissionDevelopment#0;class#MainController#0" />
                 <element signature="method#developMission#0;class#MainController#0" />
                 <element signature="method#handleRemoveMission#0;class#MainController#0" />
                 <element signature="method#removeMission#0;class#MainController#0" />
-                <element signature="method#handleRegisterMission#0;class#MainController#0" />
-                <element signature="method#addMission#0;class#MainController#0" />
                 <element signature="method#displayMissions#0;class#MainController#0" />
                 <element signature="method#getMissionIdForLogReading#0;class#MainController#0" />
                 <element signature="method#getMissionIdForDevelopment#0;class#MainController#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShipsController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/ShipsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="33" column="17" lean-forward="true" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+              <folding>
+                <element signature="e#861#862#0" expanded="true" />
+                <element signature="e#890#891#0" expanded="true" />
+                <element signature="method#run#0;class#ShipsController#0" />
+                <element signature="e#5643#5644#0" expanded="true" />
+                <element signature="e#5687#5688#0" expanded="true" />
+                <element signature="e#5871#5872#0" expanded="true" />
+                <element signature="e#5953#5954#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShipsMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/persistence/ShipsMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-136">
+              <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SwingScreensController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/SwingScreensController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+              <folding>
+                <element signature="e#1514#1515#0" expanded="true" />
+                <element signature="e#1579#1580#0" expanded="true" />
+                <element signature="e#1970#1971#0" expanded="true" />
+                <element signature="e#2039#2040#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterMissionScreen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RegisterMissionScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="132" column="61" selection-start-line="132" selection-start-column="61" selection-end-line="132" selection-end-column="61" />
+              <folding>
+                <element signature="method#renderScreen#0;class#RegisterMissionScreen#0" />
+                <element signature="method#setScreenLabelTitle#0;class#RegisterMissionScreen#0" />
+                <element signature="method#fieldsHaveCorrectValues#0;class#RegisterMissionScreen#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainScreen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/MainScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="180" column="63" selection-start-line="180" selection-start-column="63" selection-end-line="180" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#welcomeScreen#0;class#MainScreen#0" />
+                <element signature="method#getUserChoice#0;class#MainScreen#0" />
+                <element signature="method#displayMissions#0;class#MainScreen#0" />
+                <element signature="method#displayRemovePanel#0;class#MainScreen#0" />
+                <element signature="method#displayMissionsIds#0;class#MainScreen#0" />
+                <element signature="method#displayMissionsIdsForLogReading#0;class#MainScreen#0" />
+                <element signature="method#sync#0;class#MainScreen#0" />
+                <element signature="method#refresh#0;class#MainScreen#0" />
+                <element signature="method#refreshTable#0;class#MainScreen#0" />
               </folding>
             </state>
           </provider>
@@ -109,9 +174,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>registerM</find>
-      <find>registerMi</find>
-      <find>update(</find>
       <find>run</find>
       <find>display</find>
       <find>addM</find>
@@ -139,6 +201,9 @@
       <find>refres</find>
       <find>addShiptF</find>
       <find>missionButton</find>
+      <find>mainScreen</find>
+      <find>processWindowEvent</find>
+      <find>showMe</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,28 +227,32 @@
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/MotherShip.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/models/SpaceShip.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/models/Alien.java" />
-        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/ShipsScreen.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/TableDisplayerScreen.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/models/ShipContent.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/constants/RegisterScreenType.java" />
-        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/Screen.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/models/MissionContent.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RegisterScreen.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/exceptions/EmptyFieldsException.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/exceptions/FieldsWithIncorrectValuesException.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/persistence/ShipsMapper.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/models/Mission.java" />
-        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/ShipsController.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/RegisterController.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/persistence/MissionMapper.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RegisterMissionScreen.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/SwingScreen.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/DevelopMissionScreen.java" />
-        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RemoveMissionScreen.java" />
-        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/MainScreen.java" />
-        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/SwingScreensController.java" />
-        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/LogReadScreen.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/handler/ButtonHandler.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/Screen.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/ShipsScreen.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/SwingScreensController.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RemoveMissionScreen.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/CrewSizeDialogScreen.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RegisterSpaceShipScreen.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/AlienRegisterScreen.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/screens/MainScreen.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/ShipsController.java" />
+        <option value="$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/MainController.java" />
       </list>
     </option>
   </component>
@@ -197,8 +266,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="151" />
+    <option name="x" value="-40" />
+    <option name="y" value="25" />
     <option name="width" value="1366" />
     <option name="height" value="728" />
   </component>
@@ -210,9 +279,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -250,13 +318,6 @@
               <item name="mothership" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ine5605" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mothership" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mothership" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ine5605" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -277,6 +338,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -290,6 +352,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="br.ufsc.ine5605.screens" />
       <recent name="br.ufsc.ine5605.exceptions" />
     </key>
   </component>
@@ -403,11 +466,12 @@
       <workItem from="1542323522346" duration="2112000" />
       <workItem from="1542477002746" duration="811000" />
       <workItem from="1542479214914" duration="9928000" />
+      <workItem from="1542649965532" duration="7345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94194000" />
+    <option name="totallyTimeSpent" value="101539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -422,11 +486,11 @@
       <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25755167" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36248013" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16617863" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23499268" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -434,8 +498,8 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3290938" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="7.320644E-4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -451,38 +515,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="61" />
+      <option name="time" value="66" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/MainScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#renderMenu#0;class#MainScreen#0" />
-            <element signature="method#welcomeScreen#0;class#MainScreen#0" />
-            <element signature="method#getUserChoice#0;class#MainScreen#0" />
-            <element signature="method#displayMissions#0;class#MainScreen#0" />
-            <element signature="method#displayRemovePanel#0;class#MainScreen#0" />
-            <element signature="method#displayMissionsIds#0;class#MainScreen#0" />
-            <element signature="method#displayMissionsIdsForLogReading#0;class#MainScreen#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/ShipsScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="126" column="27" selection-start-line="126" selection-start-column="27" selection-end-line="126" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/Alien.java" />
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/FleetController.java" />
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Exception.java" />
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/exceptions/UnexistantChoiceException.java" />
     <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Scanner.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/lang/StringBuilder.java">
@@ -576,13 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/ShipsScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/javax/swing/JOptionPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -636,28 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/awt/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="1012" column="16" selection-start-line="1012" selection-start-column="16" selection-end-line="1012" selection-end-column="16" />
-          <folding>
-            <element signature="e#35456#35457#0" expanded="true" />
-            <element signature="e#35491#35492#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/models/SpaceShip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding>
-            <element signature="method#SpaceShip#2;class#SpaceShip#0" />
-            <element signature="method#addAlienToCrew#0;class#SpaceShip#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/models/MissionContent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -669,35 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-          <folding>
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#782#783#0" expanded="true" />
-            <element signature="e#828#829#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#705#706#0" expanded="true" />
-            <element signature="e#1185#1186#0" expanded="true" />
-            <element signature="e#1210#1211#0" expanded="true" />
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1342#1343#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/persistence/ShipsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/Screen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -726,81 +704,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RegisterMissionScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
-          <folding>
-            <element signature="method#setScreenLabelTitle#0;class#RegisterMissionScreen#0" />
-            <element signature="method#fieldsHaveCorrectValues#0;class#RegisterMissionScreen#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/SwingScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding>
-            <element signature="e#116#117#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RemoveMissionScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1145">
-          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
-          <folding>
-            <element signature="method#fieldsHaveCorrectValues#0;class#RemoveMissionScreen#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/ShipsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="188" column="30" lean-forward="true" selection-start-line="188" selection-start-column="30" selection-end-line="188" selection-end-column="30" />
-          <folding>
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
-            <element signature="e#5667#5668#0" expanded="true" />
-            <element signature="e#5704#5705#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/MainScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="181" column="10" selection-start-line="181" selection-start-column="10" selection-end-line="181" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#renderMenu#0;class#MainScreen#0" />
-            <element signature="method#welcomeScreen#0;class#MainScreen#0" />
-            <element signature="method#getUserChoice#0;class#MainScreen#0" />
-            <element signature="method#displayMissions#0;class#MainScreen#0" />
-            <element signature="method#displayRemovePanel#0;class#MainScreen#0" />
-            <element signature="method#displayMissionsIds#0;class#MainScreen#0" />
-            <element signature="method#displayMissionsIdsForLogReading#0;class#MainScreen#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/SwingScreensController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
-          <folding>
-            <element signature="e#1408#1409#0" expanded="true" />
-            <element signature="e#1475#1476#0" expanded="true" />
-            <element signature="e#1659#1660#0" expanded="true" />
-            <element signature="e#1695#1696#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/SwingScreen.java" />
     <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/DevelopMissionScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
@@ -812,40 +716,243 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/LogReadScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#fieldsHaveCorrectValues#0;class#LogReadScreen#0" />
+            <element signature="method#renderScreen#0;class#LogReadScreen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/models/SpaceShip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding>
+            <element signature="method#SpaceShip#2;class#SpaceShip#0" />
+            <element signature="method#addAlienToCrew#0;class#SpaceShip#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/handler/ButtonHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/javax/swing/WindowConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="81" column="29" lean-forward="true" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/awt/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-127">
+          <caret line="2045" column="19" selection-start-line="2045" selection-start-column="19" selection-end-line="2045" selection-end-column="19" />
+          <folding>
+            <element signature="e#35456#35457#0" expanded="true" />
+            <element signature="e#35491#35492#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/javax/swing/JFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="377" column="16" lean-forward="true" selection-start-line="377" selection-start-column="16" selection-end-line="377" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/Screen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="e#602#825#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="method#askId#0;class#Screen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RemoveMissionScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+          <folding>
+            <element signature="method#showMissionRemovalScreen#0;class#RemoveMissionScreen#0" />
+            <element signature="method#setButtonListeners#0;class#RemoveMissionScreen#0" />
+            <element signature="method#renderScreen#0;class#RemoveMissionScreen#0" />
+            <element signature="method#fieldsHaveCorrectValues#0;class#RemoveMissionScreen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/ShipsScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="225" column="53" selection-start-line="225" selection-start-column="53" selection-end-line="225" selection-end-column="53" />
+          <folding>
+            <element signature="method#registerSpaceShip#0;class#ShipsScreen#0" />
+            <element signature="method#registerId#0;class#ShipsScreen#0" />
+            <element signature="method#registerCrew#0;class#ShipsScreen#0" />
+            <element signature="method#registerAlien#0;class#ShipsScreen#0" />
+            <element signature="method#displayFleet#0;class#ShipsScreen#0" />
+            <element signature="method#displayUpdatePanel#0;class#ShipsScreen#0" />
+            <element signature="method#displayRemovePanel#0;class#ShipsScreen#0" />
+            <element signature="method#updateShip#0;class#ShipsScreen#0" />
+            <element signature="method#displayShipsIds#0;class#ShipsScreen#0" />
+            <element signature="method#openShipsPanel#0;class#ShipsScreen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/CrewSizeDialogScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="58" column="30" lean-forward="true" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="method#renderScreen#0;class#CrewSizeDialogScreen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/AlienRegisterScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="method#renderScreen#0;class#AlienRegisterScreen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RegisterSpaceShipScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#659#660#0" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#968#969#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1059#1060#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1137#1138#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/MainScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="180" column="63" selection-start-line="180" selection-start-column="63" selection-end-line="180" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#welcomeScreen#0;class#MainScreen#0" />
+            <element signature="method#getUserChoice#0;class#MainScreen#0" />
+            <element signature="method#displayMissions#0;class#MainScreen#0" />
+            <element signature="method#displayRemovePanel#0;class#MainScreen#0" />
+            <element signature="method#displayMissionsIds#0;class#MainScreen#0" />
+            <element signature="method#displayMissionsIdsForLogReading#0;class#MainScreen#0" />
+            <element signature="method#sync#0;class#MainScreen#0" />
+            <element signature="method#refresh#0;class#MainScreen#0" />
+            <element signature="method#refreshTable#0;class#MainScreen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/RegisterMissionScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="132" column="61" selection-start-line="132" selection-start-column="61" selection-end-line="132" selection-end-column="61" />
+          <folding>
+            <element signature="method#renderScreen#0;class#RegisterMissionScreen#0" />
+            <element signature="method#setScreenLabelTitle#0;class#RegisterMissionScreen#0" />
+            <element signature="method#fieldsHaveCorrectValues#0;class#RegisterMissionScreen#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/SwingScreensController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="38" column="42" lean-forward="true" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
+          <folding>
+            <element signature="e#1514#1515#0" expanded="true" />
+            <element signature="e#1579#1580#0" expanded="true" />
+            <element signature="e#1970#1971#0" expanded="true" />
+            <element signature="e#2039#2040#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/ShipsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="33" column="17" lean-forward="true" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding>
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#890#891#0" expanded="true" />
+            <element signature="method#run#0;class#ShipsController#0" />
+            <element signature="e#5643#5644#0" expanded="true" />
+            <element signature="e#5687#5688#0" expanded="true" />
+            <element signature="e#5871#5872#0" expanded="true" />
+            <element signature="e#5953#5954#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/persistence/ShipsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="288" column="33" lean-forward="true" selection-start-line="288" selection-start-column="33" selection-end-line="288" selection-end-column="33" />
+        <state relative-caret-position="175">
+          <caret line="210" column="78" selection-start-line="210" selection-start-column="78" selection-end-line="210" selection-end-column="78" />
           <folding>
             <element signature="method#MainController#0;class#MainController#0" />
             <element signature="method#syncTable#0;class#MainController#0" />
             <element signature="method#syncInMissionsAndShips#0;class#MainController#0" />
             <element signature="method#getInstance#0;class#MainController#0" />
             <element signature="method#run#0;class#MainController#0" />
-            <element signature="method#configure#0;class#MainController#0" />
             <element signature="method#executeUserChoice#0;class#MainController#0" />
+            <element signature="e#2533#2534#0" expanded="true" />
+            <element signature="e#2581#2582#0" expanded="true" />
             <element signature="method#handleMissionLogReading#0;class#MainController#0" />
             <element signature="method#handleMissionDevelopment#0;class#MainController#0" />
             <element signature="method#developMission#0;class#MainController#0" />
             <element signature="method#handleRemoveMission#0;class#MainController#0" />
             <element signature="method#removeMission#0;class#MainController#0" />
-            <element signature="method#handleRegisterMission#0;class#MainController#0" />
-            <element signature="method#addMission#0;class#MainController#0" />
             <element signature="method#displayMissions#0;class#MainController#0" />
             <element signature="method#getMissionIdForLogReading#0;class#MainController#0" />
             <element signature="method#getMissionIdForDevelopment#0;class#MainController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufsc/ine5605/screens/LogReadScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="56" column="44" lean-forward="true" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#fieldsHaveCorrectValues#0;class#LogReadScreen#0" />
-            <element signature="method#renderScreen#0;class#LogReadScreen#0" />
           </folding>
         </state>
       </provider>

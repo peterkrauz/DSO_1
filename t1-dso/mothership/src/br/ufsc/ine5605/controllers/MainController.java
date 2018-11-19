@@ -91,6 +91,10 @@ public class MainController implements Controller{
         }
     }
 
+    public void openMissionsPanel(){
+        this.mainScreen.setVisible(true);
+    }
+
     private void handleMissionLogReading() {
         if(mapper.isEmpty()){
             mainScreen.showMessage("Currently, you have no missions. Register one and start it to be able to read its log.");
@@ -204,7 +208,7 @@ public class MainController implements Controller{
         mission.setSpaceShip(ShipsController.getInstance().getShipById(missionContent.spaceShipId));
         mission.getSpaceShip().setId(missionContent.spaceShipId);
         ShipsController.getInstance().getShipById(missionContent.spaceShipId).setAvailable(false);
-        ShipsController.getInstance().save();
+        ShipsController.getInstance().saveShipState(missionContent.spaceShipId);
         mission.getSpaceShip().setAvailable(false);
 
         try{
@@ -320,4 +324,5 @@ public class MainController implements Controller{
         mapper.getMissions().stream().filter(m -> m.getState() != MissionState.STARTED).forEach(m -> sb.append(m.getId()+"\n"));
         return sb.toString();
     }
+
 }

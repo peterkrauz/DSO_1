@@ -1,10 +1,8 @@
 package br.ufsc.ine5605.controllers;
 
 import br.ufsc.ine5605.models.MissionContent;
-import br.ufsc.ine5605.screens.DevelopMissionScreen;
-import br.ufsc.ine5605.screens.LogReadScreen;
-import br.ufsc.ine5605.screens.RegisterMissionScreen;
-import br.ufsc.ine5605.screens.RemoveMissionScreen;
+import br.ufsc.ine5605.models.ShipContent;
+import br.ufsc.ine5605.screens.*;
 
 public class SwingScreensController {
 
@@ -13,9 +11,12 @@ public class SwingScreensController {
     private DevelopMissionScreen developMissionScreen;
     private LogReadScreen logReadScreen;
 
+    private RegisterSpaceShipScreen registerSpaceShipScreen;
+
     private static SwingScreensController instance;
 
     private MissionContent missionContent;
+    private ShipContent shipContent;
 
     public static SwingScreensController getInstance(){
         if( instance == null ){
@@ -29,11 +30,18 @@ public class SwingScreensController {
         removeMissionScreen = new RemoveMissionScreen();
         developMissionScreen = new DevelopMissionScreen();
         logReadScreen = new LogReadScreen();
+
+        registerSpaceShipScreen = new RegisterSpaceShipScreen();
     }
 
     public void setMissionContent(MissionContent missionContent){
         this.missionContent = missionContent;
         MainController.getInstance().addMission(missionContent);
+    }
+
+    public void setShipContent(ShipContent shipContent){
+        this.shipContent = shipContent;
+        //ShipsController.getInstance().addShip(shipContent);
     }
 
     public void showMissionRegisterScreen() {
@@ -50,5 +58,9 @@ public class SwingScreensController {
 
     public void showScreenForMissionLogReading() {
         logReadScreen.showMissionLogReadingScreen();
+    }
+
+    public void showSpaceShipRegisterScreen() {
+        registerSpaceShipScreen.showSpaceShipRegisterScreen();
     }
 }

@@ -1,14 +1,24 @@
 package br.ufsc.ine5605.screens;
 
 import br.ufsc.ine5605.controllers.ShipsController;
+import br.ufsc.ine5605.handler.ButtonHandler;
 import br.ufsc.ine5605.models.Alien;
 import br.ufsc.ine5605.models.ShipContent;
 import br.ufsc.ine5605.models.SpaceShip;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
 public class ShipsScreen extends Screen {
+
+    DefaultTableModel defaultTableModel;
+    JTable jTable;
+
+    private boolean hasCreatedAlready = false;
 
     public ShipsScreen(){
         super("Ships Screen");
@@ -162,5 +172,76 @@ public class ShipsScreen extends Screen {
             sb.append(spaceShip.getId()+"\t");
         }
         return sb.toString();
+    }
+
+    public void openShipsPanel() {
+        if( hasCreatedAlready ){
+            setVisible(true);
+        } else {
+            getContentPane().setLayout(new GridBagLayout());
+            constraints = new GridBagConstraints();
+
+            JLabel title = new JLabel("Welcome. Choose an option.");
+
+            String[] options = new String[]{"Add Ship", "Remove Ship", "Update Ship"};
+
+            String[] toolTips = new String[]{"A dialog for ship creation will appear",
+                    "A dialog to remove a ship will appear", "A dialog to update a ship will appear."};
+
+            constraints.gridy = 0;
+            getContentPane().add(title, constraints);
+
+            defaultTableModel = new DefaultTableModel();
+            defaultTableModel.addColumn("ID");
+            defaultTableModel.addColumn("Commander");
+            defaultTableModel.addColumn("Crew Size");
+            defaultTableModel.addColumn("Available");
+
+            jTable = new JTable();
+            jTable.setPreferredScrollableViewportSize(new Dimension(550, 350));
+            jTable.setModel(defaultTableModel);
+            JScrollPane jScrollPane = new JScrollPane(jTable);
+            jScrollPane.setPreferredSize(new Dimension(550, 200));
+
+            constraints.gridy = 2;
+            getContentPane().add(jScrollPane, constraints);
+
+            renderMenu(options, toolTips, new ShipsButtonHandler());
+
+            hasCreatedAlready = true;
+            setSize(600, 350);
+            setResizable(false);
+            setLocationRelativeTo(null);
+            setVisible(true);
+            setDefaultCloseOperation(HIDE_ON_CLOSE);
+        }
+    }
+
+    class ShipsButtonHandler extends ButtonHandler {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            switch (e.getActionCommand()){
+                case "Add Ship":
+                    ShipsController.getInstance().handleRegisterShip();
+                    break;
+                case "Remove Ship":
+                    showDialog(e.getActionCommand());
+                    if( ShipsController.getInstance().hasAvailableShip() ){
+
+                    } else {
+                        showDialog("You have no registered spaceships to remove!\nAdd one first to be able to remove it.");
+                    }
+                    break;
+                case "Update Ship":
+                    showDialog(e.getActionCommand());
+                    if( ShipsController.getInstance().hasAvailableShipToUpdate() ){
+
+                    } else {
+                        showDialog("You either have no ships, or your ships are on a mission -\nmaking it impossible to update them.\nPlease register a new one.");
+                    }
+                    break;
+            }
+        }
     }
 }

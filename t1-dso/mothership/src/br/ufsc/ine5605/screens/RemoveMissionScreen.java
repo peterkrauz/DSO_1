@@ -12,8 +12,6 @@ public class RemoveMissionScreen extends Screen{
 
     private boolean hasCreatedAlready = false;
 
-    private GridBagConstraints constraints;
-
     private JTextField missionIdTextField;
 
     private JButton confirmButton;

@@ -3,13 +3,13 @@ package br.ufsc.ine5605.screens;
 import br.ufsc.ine5605.controllers.MainController;
 import br.ufsc.ine5605.constants.MissionState;
 import br.ufsc.ine5605.controllers.ShipsController;
+import br.ufsc.ine5605.handler.ButtonHandler;
 import br.ufsc.ine5605.models.Mission;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.InputMismatchException;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class MainScreen extends Screen{
     public MainScreen(){
         super("Mothership");
         getContentPane().setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
+        constraints = new GridBagConstraints();
 
         JLabel title = new JLabel("Welcome. Choose an option.");
 
@@ -58,18 +58,6 @@ public class MainScreen extends Screen{
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
-
-    private void renderMenu(String[] options, String[] toolTips, MissionButtonHandler mbh) {
-        GridBagConstraints constraints = new GridBagConstraints();
-        for( int i=0; i<options.length; i++ ){
-            JButton jButton = new JButton(options[i]);
-            jButton.setPreferredSize(new Dimension(200, 30));
-            jButton.addActionListener(mbh);
-            jButton.setToolTipText(toolTips[i]);
-            constraints.gridy = i+3;
-            getContentPane().add(jButton, constraints);
-        }
     }
 
     public void welcomeScreen(){
@@ -179,13 +167,14 @@ public class MainScreen extends Screen{
         }
     }
 
-    class MissionButtonHandler implements ActionListener {
+    class MissionButtonHandler extends ButtonHandler {
         @Override
         public void actionPerformed(ActionEvent e) {
 
             switch (e.getActionCommand()){
                 case "Enter Ships Panel":
-                    showDialog(e.getActionCommand());
+                    ShipsController.getInstance().openShipsPanel();
+                    setVisible(false);
                     break;
                 case "Add Mission":
                     if( ShipsController.getInstance().hasAvailableShip() ){
